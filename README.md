@@ -1,0 +1,23 @@
+Planeringsmall — Projektskiss Fyll i denna mall innan ni börjar koda. Skissen är ett första utkast, inte ett facit — det är både normalt och förväntat att klassnamn och struktur ändras när ni väl börjar implementera. Spara den ifyllda mallen som README i er första commit, tillsammans med namn på den/de som jobbar i projektet.
+
+Nadia Hörberg
+
+Projektidé En till två meningar: vilken domän, och vad programmet ska göra. Blomsterbutik, användaren ska kunna se vilka blommor/varor det finns i lager, skapa beställning och få den hemskickad.
+
+Superklass Namn: Order
+
+Gemensamma fält: customerName, orderId, status, price, adress
+
+Gemensamma metoder: basketPrice(), displayOrder(), changeStatus()
+
+Subklasser (minst tre) Namn — vad gör den annorlunda, vilka metoder overridas? BouquetOrder, basketPrice() ovverridas. Priser beräknas utifrån kostnaden på varan/varorna i kundkorgen StandardDelivery, basketPrice(). Lägger till leveranskostnad på priset. ExpressDelivery, basketPrice(). Lägger till en extra kostnad för leveransen.
+
+Interface Namn: Discount Metod(er): applyDiscount() Implementeras av (minst två subklasser): BouquetOrder, standardDelivery
+
+Meny Lista minst fyra åtgärder kopplade till samlingen (t.ex. lägga till, ta bort, söka, samt en egen åtgärd som passar er domän). -Lägg till order -Ändra order -Visa orderstatus -Avbryt order
+
+Felscenarion Minst två konkreta situationer i just ert program som kan gå fel och som ni behöver hantera (inte generella exempel).
+
+-Försök att spåra en beställning som inte finns, alltså utan orderId eller med ett orderId som inte finns -Försök att lägga en order utan att varor lagts till
+
+Motivering (fylls i senare i veckan) När ni kommit igång och gjort några ändringar: skriv kort varför strukturen ser ut som den gör, och om ni övervägde ett annat sätt att lösa det på. Detta behöver inte fyllas i redan i första commiten.
