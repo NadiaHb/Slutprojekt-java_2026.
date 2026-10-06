@@ -95,17 +95,27 @@ public class Main {
                    break;
                }
 
-
             //Här skapas ordern
-            Order order = new Order(
-
+            order = new Order(
+           customer,
+           bouquet,
+           delivery
             );
+            System.out.println();
+            System.out.println("Tack för din beställning!");
+            break;
 
-            order.displayOrder();
 
-            order.basketPrice();
+            case 2:
 
-            order.changeStatus()
+                if (order == null) {
+                    System.out.println("Ingen beställning hittad");
+                } else {
+                    order.displayOrder();
+                }
+                break;
+
+            case 3:
 
         }
     }
