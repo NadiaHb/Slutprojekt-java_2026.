@@ -14,6 +14,7 @@ public class Main {
             System.out.println("2. Visa varukorgen");
             System.out.println("3. Ändra leverans");
             System.out.println("4. Avbryt beställning");
+            System.out.println("5. Avsluta program");
 
 
             //Alla menyval och metoder för dem
@@ -43,7 +44,7 @@ public class Main {
 
                     Customer customer = new Customer(name, mail, adress);
 
-            }
+
 
 
         //Nedan har vi namnet på varorna, aka blombuketter samt pris
@@ -53,16 +54,31 @@ public class Main {
         System.out.println("2. Bunt röda rosor, 120kr SEK");
         System.out.println("3. Höstbukett, 400kr SEK");
         System.out.println("Du har valt: ");
-        int bouquetChoice = scanner.nextInt();
 
-        Bouquet selectedBouquet;
-        if (bouquetChoice == 1) {
-            selectedBouquet = new Bouquet("Bunt gula tulpaner", 100);
-        } else if (bouquetChoice == 2) {
-            selectedBouquet = new Bouquet("Bunt röda rosor", 120);
-        }else {
-            selectedBouquet = new Bouquet("Höstbukett", 400);
+
+        int bouquetChoice;
+
+        try {
+            bouquetChoice = scanner.nextInt();
+        }catch (Exception e) {
+            System.out.println("Vänligen ange godkänd siffra.");
+            scanner.nextLine();
+            break;
         }
+        scanner.nextLine();
+        Bouquet bouquet;
+
+        if (bouquetChoice == 1) {
+            bouquet = new Bouquet("Bunt gula tulpaner", 100);
+        } else if (bouquetChoice == 2) {
+            bouquet = new Bouquet("Bunt röda rosor", 120);
+        } else if (bouquetChoice == 3) {
+            bouquet = new Bouquet("Höstbukett", 400);
+        } else {
+            System.out.println("Ogiltligt val");
+        }
+
+
 
 //Delivery menyval, standard och express
             System.out.println();
@@ -96,11 +112,8 @@ public class Main {
                }
 
             //Här skapas ordern
-            order = new Order(
-           customer,
-           bouquet,
-           delivery
-            );
+            order = new Order(customer, bouquet, delivery);
+
             System.out.println();
             System.out.println("Tack för din beställning!");
             break;
@@ -117,8 +130,39 @@ public class Main {
 
             case 3:
 
+                if (order == null) {
+                    System.out.println("Ingen beställning hittad");
+                } else {
+                    System.out.println("Ändra leverans");
+                    System.out.println("Angiven adress: " + order.getCustomer().getAdress());
+                    System.out.println("Fyll i leveransadress: ");
+                    String newAdress = scanner.nextLine();
+                    order.getCustomer().setAdress(newAdress);
+                    System.out.println("Adressändring komplett");
+                }
+                 break;
+
+
+                case 4:
+                    if (order ==null) {
+                        System.out.println();
+                        System.out.println("Ingen beställning hittad");
+                    } else {
+                        order = null;
+                        System.out.println();
+                        System.out.println("Beställning avbruten");
+                    }
+                    break;
+
+                case 5:
+                    running = false;
+                    System.out.println("Tack för besöket, välkommen åter!");
+                    break;
+                default:
+                    System.out.println("Välj ett menyalternativ(1-5)");
         }
     }
+        scanner.close();
 }
 
 
