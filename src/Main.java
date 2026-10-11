@@ -112,10 +112,18 @@ public class Main {
                    break;
                }
 
-            //Här skapas ordern
+            //Här skapas ordern och ordersammanfattning
             order = new Order(10, customer, delivery, bouquet);
 
-            System.out.println();
+           System.out.println("-----Ordersammanfattning------");
+           System.out.println("Mottagare: " + customer.getName());
+           System.out.println("E-post: " + customer.getMail());
+            System.out.println("Leveransadress: " + customer.getAdress());
+            System.out.println("Vald bukett: " + bouquet.getName());
+            System.out.println("Bukett kostnad: " + bouquet.getPrice() + " kr");
+            System.out.println("Leveransmetod: " + delivery.getType());
+            System.out.println("Leveranskostnad: " + delivery.getDeliveryFee() + " kr");
+            System.out.println("Totalpris: " + (bouquet.getPrice() + delivery.getDeliveryFee()) + " ke");
             System.out.println("Tack för din beställning!");
             break;
 
@@ -165,10 +173,6 @@ public class Main {
     }
         scanner.close();
 }
-
-
-
-
 
 
         }

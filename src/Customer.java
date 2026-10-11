@@ -18,9 +18,7 @@ public class Customer {
         return mail;
     }
 
-    public String getAdress() {
-        return null;
-    }
+    public String getAdress() { return adress;}
 
     public void setAdress(String newAdress) {
     }
