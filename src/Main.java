@@ -124,6 +124,7 @@ public class Main {
             System.out.println("Leveransmetod: " + delivery.getType());
             System.out.println("Leveranskostnad: " + delivery.getDeliveryFee() + " kr");
             System.out.println("Totalpris: " + (bouquet.getPrice() + delivery.getDeliveryFee()) + " ke");
+                    System.out.println("-------------------------");
             System.out.println("Tack för din beställning!");
             break;
 
