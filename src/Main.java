@@ -11,7 +11,7 @@ public class Main {
         while (running){
             System.out.println("Välkommen till Nadias blomsterbutik!");
             System.out.println("1.Skapa order");
-            System.out.println("2. Visa varukorgen");
+            System.out.println("2. Visa order");
             System.out.println("3. Ändra leverans");
             System.out.println("4. Avbryt beställning");
             System.out.println("5. Avsluta program");
