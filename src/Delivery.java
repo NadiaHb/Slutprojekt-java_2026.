@@ -1,26 +1,24 @@
 public class Delivery {
 
-    private String name;
-    private double price;
+    private String type;
+    private double deliveryFee;
 
-    public Delivery(String name, double price) {
-        this.name = name;
-        this.price = price;
+    public Delivery(String type, double deliveryFee){
+        this.type =type;
+        this.deliveryFee = deliveryFee;
     }
 
-    public String getName() {
-        return name;
+    public String getType(){
+        return type;
+    }
+    public double getDeliveryFee() {
+        return deliveryFee;
     }
 
-    public double getPrice() {
-        return price;
+    public void setType(String type) {
+        this.type = type;
     }
-
-    public void displayBouquet() {
-        System.out.println(name + "," + price + "SEK");
+    public void setDeliveryFee(double deliveryFee) {
+        this.deliveryFee = deliveryFee;
     }
-
-
-    }
-
-
+}

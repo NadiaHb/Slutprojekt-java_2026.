@@ -66,18 +66,19 @@ public class Main {
             break;
         }
         scanner.nextLine();
-        Bouquet bouquet;
 
-        if (bouquetChoice == 1) {
-            bouquet = new Bouquet("Bunt gula tulpaner", 100);
-        } else if (bouquetChoice == 2) {
-            bouquet = new Bouquet("Bunt röda rosor", 120);
-        } else if (bouquetChoice == 3) {
-            bouquet = new Bouquet("Höstbukett", 400);
-        } else {
-            System.out.println("Ogiltligt val");
-        }
+                    Bouquet bouquet;
 
+                    if (bouquetChoice == 1) {
+                        bouquet = new Bouquet("Bunt gula tulpaner", 100);
+                    } else if (bouquetChoice == 2) {
+                        bouquet = new Bouquet("Bunt röda rosor", 120);
+                    } else if (bouquetChoice == 3) {
+                        bouquet = new Bouquet("Höstbukett", 400);
+                    } else {
+                        System.out.println("Ogiltligt val");
+                        break;
+                    }
 
 
 //Delivery menyval, standard och express
@@ -112,7 +113,7 @@ public class Main {
                }
 
             //Här skapas ordern
-            order = new Order(customer, bouquet, delivery);
+            order = new Order(10, customer, delivery, bouquet);
 
             System.out.println();
             System.out.println("Tack för din beställning!");

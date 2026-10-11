@@ -13,7 +13,7 @@ public class Order {
     }
 
     public double totalPrice() {
-        return bouquet.getPrice() + delivery.getPrice();
+        return bouquet.getPrice() + delivery.getDeliveryFee();
     }
 
     public void displayOrder() {
@@ -36,7 +36,7 @@ public class Order {
     public Bouquet getBouquet() {
         return bouquet;
     }
-    public Delivery getDelivery() {
+    public Delivery getDeliveryFee() {
         return  delivery;
     }
 }
