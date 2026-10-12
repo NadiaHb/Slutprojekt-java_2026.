@@ -5,13 +5,14 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-//loggar det användaren skriver i konsolen med scanner
+//using scanner to log what user types in consol
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Order> orders = new ArrayList<>();
+        ArrayList<Order> orders = new ArrayList<>(); //arr för flera ordrar.
         boolean running = true;
 
         int nextOrderId= 1;
-        //medans programet körs visas menyvalen
+        //while program is running, menuchoices are visible
+        //while-loop is running as long as boolean value is true
         while (running){
             System.out.println("Välkommen till Nadias blomsterbutik!");
             System.out.println("1.Skapa order");
@@ -21,9 +22,9 @@ public class Main {
             System.out.println("5. Avsluta program");
 
 
-            //Alla menyval och metoder för dem
+            //All menuchoices and methods
             int menuChoice;
-//Try catch för o fånga heltal, ska inta ha exceptions e.
+//Try catch for integers, ska inta ha exceptions e då det är ett generellt catch(missat!)
             try {
                 menuChoice = scanner.nextInt();
             } catch (Exception e) {
@@ -51,7 +52,7 @@ public class Main {
 
 
 
-        //Nedan har vi namnet på varorna, aka blombuketter samt pris
+        //The names and prices of the items
 
         System.out.println("Vänligen välj önskad bukett");
         System.out.println("1. Bunt gula tulpaner, 100kr SEK");
@@ -85,7 +86,7 @@ public class Main {
                     }
 
 
-//Delivery menyval, standard och express
+//Delivery menucoice, standard and express
             System.out.println();
             System.out.println("Leveransmetor: ");
             System.out.println("Välj 1 för Standardleverans: 5-7 arbetsdagar, 59kr SEK");
@@ -100,7 +101,7 @@ public class Main {
             scanner.nextLine();
             break;
         }
-            // här läggs info till för att skicka ordern till kund
+        // info is added to send order to customer
         scanner.nextLine();
 
         Delivery delivery;
@@ -116,10 +117,11 @@ public class Main {
                    break;
                }
 
-            //Här skapas ordern och ordersammanfattning
+            //order is created as well as an order summary
             Order newOrder = new Order (nextOrderId, customer, delivery, bouquet);
            orders.add(newOrder);
-           /* flera ordrar samtidigt möjliga, nästföljande order får 2, 3, 4 osv*/
+
+           //multiple orders availble, following order gets orderId 2,3,4 etc
            nextOrderId++;
 
            System.out.println("-----Ordersammanfattning------");
@@ -136,10 +138,10 @@ public class Main {
             System.out.println("Tack för din beställning!");
             break;
 
-//visar orders
+          //menu choice to display order, orderId is needed
             case 2:
 
-                if (orders.isEmpty()) { //om det inte finns någon order loggas nedan
+                if (orders.isEmpty()) { //if there's no order
                     System.out.println("Ingen beställning hittad");
                 } else {
                     System.out.println("Ange orderId");
@@ -157,7 +159,7 @@ public class Main {
                     }
                 break;
 
-            case 3: //ändrar levreansadress
+            case 3: //menuchoice to chage delivery adress, must have orderId to proceed
 
                 if (orders.isEmpty()) {
                     System.out.println("Ingen beställning hittad");
@@ -169,8 +171,9 @@ public class Main {
                     if (orderId > 0 && orderId <= orders.size()) {
                         Order selectedOrder = orders.get(orderId - 1);
 
-                        System.out.println("Ingen beställning hittad");
+
                 } else {
+                        System.out.println("Ingen beställning hittad"); //
                         System.out.println("Ange orderId");
                         scanner.nextLine();
                     }
@@ -183,6 +186,7 @@ public class Main {
                     System.out.println("Fyll i ny leveransadress: ");
                     String newAdress = scanner.nextLine();
                     selectedOrder.getCustomer().setAdress(newAdress);
+                    System.out.println("Ny adress: " + selectedOrder.getCustomer().getAdress());
                     System.out.println("Adressändring komplett");
                 }else {
                     System.out.println("Ogiltligt orderId");
@@ -190,7 +194,7 @@ public class Main {
                 }
                  break;
 
-//avbryter order
+                          //menuchoice to cancel order, must have orderId to proceed
                 case 4:
                     if (orders.isEmpty()) {
                         System.out.println();
@@ -208,7 +212,7 @@ public class Main {
                         }
                     }
                     break;
-//avslutar program
+                   //menuchoice to exit
                 case 5:
                     running = false;
                     System.out.println("Tack för besöket, välkommen åter!");

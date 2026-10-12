@@ -2,7 +2,7 @@ public class Delivery {
 
     private String type;
     private double deliveryFee;
-
+//constructor
     public Delivery(String type, double deliveryFee){
         this.type =type;
         this.deliveryFee = deliveryFee;

@@ -1,18 +1,19 @@
 public class Bouquet {
-//attribut hålls privata
+//attributes are kept private
     private String name;
     private double price;
 
-    //konstruktorn som körs när jag skapar en ny bukett
+
+    //constructor that runs when a new bouquet is created, contain name and price
     public Bouquet(String name, double price) {
         this.name = name;
         this.price = price;
     }
-
+//Jag ska göra en superklass med klasshierari av bouquet, missat..!
     public String getName() {
         return name;
     }
-//publika getters
+//public getters
     public double getPrice() {
         return price;
     }
