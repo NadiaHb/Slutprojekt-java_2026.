@@ -1,13 +1,17 @@
+import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class Main {
 
     public static void main(String[] args) {
-
+//loggar det användaren skriver i konsolen med scanner
         Scanner scanner = new Scanner(System.in);
-        Order order = null;
+        ArrayList<Order> orders = new ArrayList<>();
         boolean running = true;
 
+        int nextOrderId= 1;
+        //medans programet körs visas menyvalen
         while (running){
             System.out.println("Välkommen till Nadias blomsterbutik!");
             System.out.println("1.Skapa order");
@@ -19,7 +23,7 @@ public class Main {
 
             //Alla menyval och metoder för dem
             int menuChoice;
-
+//Try catch för o fånga heltal, ska inta ha exceptions e.
             try {
                 menuChoice = scanner.nextInt();
             } catch (Exception e) {
@@ -113,57 +117,98 @@ public class Main {
                }
 
             //Här skapas ordern och ordersammanfattning
-            order = new Order(10, customer, delivery, bouquet);
+            Order newOrder = new Order (nextOrderId, customer, delivery, bouquet);
+           orders.add(newOrder);
+           /* flera ordrar samtidigt möjliga, nästföljande order får 2, 3, 4 osv*/
+           nextOrderId++;
 
            System.out.println("-----Ordersammanfattning------");
            System.out.println("Mottagare: " + customer.getName());
+           System.out.println("OrderId: " + newOrder.getOrderId());
            System.out.println("E-post: " + customer.getMail());
             System.out.println("Leveransadress: " + customer.getAdress());
             System.out.println("Vald bukett: " + bouquet.getName());
             System.out.println("Bukett kostnad: " + bouquet.getPrice() + " kr");
             System.out.println("Leveransmetod: " + delivery.getType());
             System.out.println("Leveranskostnad: " + delivery.getDeliveryFee() + " kr");
-            System.out.println("Totalpris: " + (bouquet.getPrice() + delivery.getDeliveryFee()) + " ke");
+            System.out.println("Totalpris: " + (bouquet.getPrice() + delivery.getDeliveryFee()) + " kr");
                     System.out.println("-------------------------");
             System.out.println("Tack för din beställning!");
             break;
 
-
+//visar orders
             case 2:
 
-                if (order == null) {
+                if (orders.isEmpty()) { //om det inte finns någon order loggas nedan
                     System.out.println("Ingen beställning hittad");
                 } else {
-                    order.displayOrder();
-                }
+                    System.out.println("Ange orderId");
+                    int orderId = scanner.nextInt();
+                    scanner.nextLine();
+                    for (Order currentOrder : orders) {
+                        currentOrder.displayOrder();
+                    }
+                    if (orderId > 0 && orderId <= orders.size()) {
+                        Order selectedOrder = orders.get(orderId - 1);
+
+                        } else {
+                        System.out.println("Ogiltligt orderId");
+                    }
+                    }
                 break;
 
-            case 3:
+            case 3: //ändrar levreansadress
 
-                if (order == null) {
+                if (orders.isEmpty()) {
                     System.out.println("Ingen beställning hittad");
                 } else {
+                    System.out.println("Ange order ID");
+                    int orderId = scanner.nextInt();
+                    scanner.nextLine();
+
+                    if (orderId > 0 && orderId <= orders.size()) {
+                        Order selectedOrder = orders.get(orderId - 1);
+
+                        System.out.println("Ingen beställning hittad");
+                } else {
+                        System.out.println("Ange orderId");
+                        scanner.nextLine();
+                    }
+
+                if (orderId > 0 && orderId <= orders.size()) {
+                    Order selectedOrder = orders.get(orderId - 1);
+
                     System.out.println("Ändra leverans");
-                    System.out.println("Angiven adress: " + order.getCustomer().getAdress());
-                    System.out.println("Fyll i leveransadress: ");
+                    System.out.println("Angiven adress: " + selectedOrder.getCustomer().getAdress());
+                    System.out.println("Fyll i ny leveransadress: ");
                     String newAdress = scanner.nextLine();
-                    order.getCustomer().setAdress(newAdress);
+                    selectedOrder.getCustomer().setAdress(newAdress);
                     System.out.println("Adressändring komplett");
+                }else {
+                    System.out.println("Ogiltligt orderId");
+                }
                 }
                  break;
 
-
+//avbryter order
                 case 4:
-                    if (order ==null) {
+                    if (orders.isEmpty()) {
                         System.out.println();
                         System.out.println("Ingen beställning hittad");
                     } else {
-                        order = null;
-                        System.out.println();
-                        System.out.println("Beställning avbruten");
+                        System.out.println("Ange orderId");
+                        int orderId = scanner.nextInt();
+                        scanner.nextLine();
+
+                        if (orderId > 0 && orderId <= orders.size()) {
+                            orders.remove(orderId - 1);
+                            System.out.println("Beställning avbruten");
+                        } else {
+                            System.out.println("Ogiltligt orderId");
+                        }
                     }
                     break;
-
+//avslutar program
                 case 5:
                     running = false;
                     System.out.println("Tack för besöket, välkommen åter!");

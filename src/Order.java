@@ -4,18 +4,18 @@ public class Order {
     private Customer customer;
     private Delivery delivery;
     private Bouquet bouquet;
-
+//konstruktorn
     public Order(int orderId, Customer customer, Delivery delivery, Bouquet bouquet) {
         this.orderId = orderId;
         this.customer = customer;
         this.delivery = delivery;
         this.bouquet = bouquet;
     }
-
+//metod för totalkostnad
     public double totalPrice() {
         return bouquet.getPrice() + delivery.getDeliveryFee();
     }
-
+//metod som skriver ut ordersammanfattning
     public void displayOrder() {
 
         System.out.println();
@@ -38,5 +38,8 @@ public class Order {
     }
     public Delivery getDeliveryFee() {
         return  delivery;
+    }
+    public int getOrderId() {
+        return orderId;
     }
 }
