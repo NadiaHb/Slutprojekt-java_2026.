@@ -3,7 +3,7 @@ public class Bouquet {
     private String name;
     private double price;
 
-// test commit
+
     //constructor that runs when a new bouquet is created, contain name and price
     public Bouquet(String name, double price) {
         this.name = name;
@@ -21,4 +21,10 @@ public class Bouquet {
     public void displayBouquet() {
         System.out.println(name + "," + price + "SEK");
     }
+
+    public String getDescription() {
+        return "En fin blomnukett";
+    }
 }
+
+

@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 //using scanner to log what user types in consol
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Order> orders = new ArrayList<>(); //arr för flera ordrar.
+        ArrayList<Order> orders = new ArrayList<>(); //arr for multiple orders.
         boolean running = true;
 
         int nextOrderId= 1;
