@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,7 +8,12 @@ public class Main {
     public static void main(String[] args) {
 //using scanner to log what user types in consol
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Order> orders = new ArrayList<>(); //arr for multiple orders.
+        ArrayList<Order> orders = new ArrayList<>(); //arraylist for multiple orders.
+        ArrayList<Bouquet> bouquets = new ArrayList<>(); //Arraylist for different bouquets
+        bouquets.add(new TulipBouquet());
+        bouquets.add(new RoseBouquet());
+        bouquets.add(new AutumnBouquet());
+
         boolean running = true;
 
         int nextOrderId= 1;
@@ -63,29 +69,30 @@ public class Main {
 
         int bouquetChoice;
 
+        for (Bouquet bouquet : bouquets) {
+            bouquet.displayBouquet();
+            System.out.println(bouquet.getDescription());
+        }
         try {
             bouquetChoice = scanner.nextInt();
-        }catch (Exception e) {
-            System.out.println("Vänligen ange godkänd siffra.");
+        } catch (Exception e) {
+            System.out.println("Vänligen ange en godkänd siffra");
             scanner.nextLine();
             break;
         }
         scanner.nextLine();
+        Bouquet bouquet;
 
-                    Bouquet bouquet;
-
-                    if (bouquetChoice == 1) {
-                        bouquet = new Bouquet("Bunt gula tulpaner", 100);
-                    } else if (bouquetChoice == 2) {
-                        bouquet = new Bouquet("Bunt röda rosor", 120);
-                    } else if (bouquetChoice == 3) {
-                        bouquet = new Bouquet("Höstbukett", 400);
-                    } else {
-                        System.out.println("Ogiltligt val");
-                        break;
-                    }
-
-
+        if (bouquetChoice == 1) {
+            bouquet = new TulipBouquet();
+        } else if (bouquetChoice == 2) {
+            bouquet = new RoseBouquet();
+        } else if (bouquetChoice == 3) {
+            bouquet = new AutumnBouquet();
+        } else {
+            System.out.println("Ogiltligt val");
+            break;
+        }
 //Delivery menucoice, standard and express
             System.out.println();
             System.out.println("Leveransmetor: ");

@@ -6,7 +6,7 @@ public class TulipBouquet extends Bouquet {
     //overrides the method in the superclass
     @Override
     public void displayBouquet() {
-        System.out.println("Bunt gula tulpaner: " +getName());
+        System.out.println(getName() + ":");
     }
     //overrides the description in superclass
     @Override
