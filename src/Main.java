@@ -157,17 +157,16 @@ public class Main {
           //menu choice to display order, orderId is needed
             case 2:
 
-                if (orders.isEmpty()) { //if there's no order
+                if (orders.isEmpty()) { //checking if there's no order
                     System.out.println("Ingen beställning hittad");
                 } else {
-                    System.out.println("Ange orderId");
+                    System.out.println("Ange orderId"); //user must enter orderId
                     int orderId = scanner.nextInt();
                     scanner.nextLine();
-                    for (Order currentOrder : orders) {
-                        currentOrder.displayOrder();
-                    }
+                    //checking for valid orderId, finding matching order and displaying info
                     if (orderId > 0 && orderId <= orders.size()) {
                         Order selectedOrder = orders.get(orderId - 1);
+                        selectedOrder.displayOrder();
 
                         } else {
                         System.out.println("Ogiltligt orderId");
