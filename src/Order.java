@@ -1,4 +1,4 @@
-public class Order {
+public class Order implements  DeliveryInfo {
 
     private int orderId;
     private Customer customer;
@@ -16,7 +16,7 @@ public class Order {
         return bouquet.getPrice() + delivery.getDeliveryFee();
     }
 
-   //method to display order summary when console los show order
+   //method to display order summary when console logs show order
     public void displayOrder() {
 
         System.out.println();
@@ -30,7 +30,7 @@ public class Order {
         System.out.println("Total kostnad för din beställning är: " + totalPrice() + "SEK");
         System.out.println();
     }
-
+//public getters for accessing information in other classes
     public Customer getCustomer() {
         return customer;
     }
@@ -42,5 +42,11 @@ public class Order {
     }
     public int getOrderId() {
         return orderId;
+    }
+    //Display the deliveryinfo for the order
+    @Override
+    public void showDeliveryInfo() {
+        System.out.println("Leveranstyp: " + delivery.getType());
+        System.out.println("Leveranskostnad: " + delivery.getDeliveryFee());
     }
 }

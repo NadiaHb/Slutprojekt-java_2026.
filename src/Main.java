@@ -127,6 +127,15 @@ public class Main {
             //order is created as well as an order summary
             Order newOrder = new Order (nextOrderId, customer, delivery, bouquet);
            orders.add(newOrder);
+           //polymorphic arraylist using the deliveryInfo interface
+           ArrayList<DeliveryInfo> deliveryInfos = new ArrayList<>();
+           deliveryInfos.add(delivery);//adding delivery and order objects to the list
+           deliveryInfos.add(newOrder);
+
+           //for loop through the list, displaying delivery information
+           for(DeliveryInfo info : deliveryInfos) {
+               info.showDeliveryInfo();
+           }
 
            //multiple orders availble, following order gets orderId 2,3,4 etc
            nextOrderId++;
