@@ -1,6 +1,7 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 
 public class Main {
@@ -30,15 +31,22 @@ public class Main {
 
             //All menuchoices and methods
             int menuChoice;
-//Try catch for integers, ska inta ha exceptions e då det är ett generellt catch(missat!)
+//Try catch for integers
             try {
                 menuChoice = scanner.nextInt();
-            } catch (Exception e) {
+            } catch (InputMismatchException e) { //catch for invalid input when user enter is not a number
                 System.out.println("Du måste ange en siffra.");
                 scanner.nextLine();
                 continue;
             }
             scanner.nextLine();
+            //checking if the menu choice is within valid range
+            if (menuChoice < 1 || menuChoice > 5) {
+                System.out.println("Ogiltligt val, ange ett val mellan 1-5.");
+                //Displays error message if menuchoice is invalid
+                continue;
+            }
+
             switch (menuChoice) {
                 case 1:
                     System.out.println();
@@ -75,9 +83,19 @@ public class Main {
         }
         try {
             bouquetChoice = scanner.nextInt();
-        } catch (Exception e) {
+
+            //Checking for valid bouquet choice
+        if (bouquetChoice < 1 || bouquetChoice > 3) {
+            throw new IllegalArgumentException("Ogiltligt val");
+        }
+        } catch (InputMismatchException e) {
+          //catch for invalid input whe user enter something that's not a number
             System.out.println("Vänligen ange en godkänd siffra");
             scanner.nextLine();
+            break;
+        } catch (IllegalArgumentException e) {
+           //catch for invalid bouquet choice
+            System.out.println(e.getMessage());
             break;
         }
         scanner.nextLine();
@@ -103,9 +121,17 @@ public class Main {
         int deliveryChoice;
         try {
             deliveryChoice = scanner.nextInt();
-        } catch (Exception e) {
+        //Cheching for valid delivery choice
+        if (deliveryChoice < 1 || deliveryChoice > 2) {
+            throw new IllegalArgumentException("Ogiltligt val");
+        }
+        //Catch for invalid input when user enters something besides a number
+        } catch (InputMismatchException e) {
             System.out.println("Ogiltigt val. Vänligen ange giltligt nummer");
             scanner.nextLine();
+            break;
+        } catch (IllegalArgumentException e) { // catch for invalid delivery choice
+            System.out.println(e.getMessage());
             break;
         }
         // info is added to send order to customer
