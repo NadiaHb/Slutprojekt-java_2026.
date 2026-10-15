@@ -10,7 +10,7 @@ public class Customer {
         this.mail = mail;
         this.adress = adress;
     }
-//metthods
+//public methods
     public String getName() {
         return name;
     }

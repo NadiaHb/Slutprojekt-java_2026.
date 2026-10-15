@@ -9,7 +9,7 @@ public class Bouquet {
         this.name = name;
         this.price = price;
     }
-//Jag ska göra en superklass med klasshierari av bouquet, missat..!
+
     public String getName() {
         return name;
     }

@@ -1,4 +1,4 @@
 public interface DeliveryInfo {
-//interface to display delivery informtion in clsses
+//interface to display delivery information in classes
      void showDeliveryInfo();
 }

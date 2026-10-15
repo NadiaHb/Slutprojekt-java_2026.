@@ -7,7 +7,7 @@ public class Delivery implements DeliveryInfo{
         this.type =type;
         this.deliveryFee = deliveryFee;
     }
-//Getters and setters methods to find nd change information connected to the delivery
+//Getters and setters methods to find and change information connected to the delivery
     public String getType(){
         return type;
     }

@@ -15,9 +15,11 @@ public class Main {
         bouquets.add(new RoseBouquet());
         bouquets.add(new AutumnBouquet());
 
-        boolean running = true;
+        boolean running = true; //menu loop
 
-        int nextOrderId= 1;
+        int nextOrderId= 1; //Order id counter
+
+
         //while program is running, menuchoices are visible
         //while-loop is running as long as boolean value is true
         while (running){
@@ -75,32 +77,38 @@ public class Main {
         System.out.println("Du har valt: ");
 
 
-        int bouquetChoice;
-
+        int bouquetChoice =0;
+        boolean validBouquet = false;
+        //Repeat while user inputs invalid choice until user inputs valid choice
+        while (!validBouquet) {
+        //Displays availble bouquet options
         for (Bouquet bouquet : bouquets) {
             bouquet.displayBouquet();
             System.out.println(bouquet.getDescription());
         }
+        //Ask user to choose bouquet
+            System.out.println("Välj bukett genom att välja val 1-2");
         try {
-            bouquetChoice = scanner.nextInt();
+            bouquetChoice = scanner.nextInt();//Check user's choise
 
             //Checking for valid bouquet choice
         if (bouquetChoice < 1 || bouquetChoice > 3) {
             throw new IllegalArgumentException("Ogiltligt val");
         }
+        validBouquet = true;
         } catch (InputMismatchException e) {
           //catch for invalid input whe user enter something that's not a number
             System.out.println("Vänligen ange en godkänd siffra");
             scanner.nextLine();
-            break;
+
         } catch (IllegalArgumentException e) {
-           //catch for invalid bouquet choice
+            //catch for invalid bouquet choice
             System.out.println(e.getMessage());
-            break;
+        }
         }
         scanner.nextLine();
         Bouquet bouquet;
-
+        //if else for the selected bouquet
         if (bouquetChoice == 1) {
             bouquet = new TulipBouquet();
         } else if (bouquetChoice == 2) {
@@ -111,28 +119,33 @@ public class Main {
             System.out.println("Ogiltligt val");
             break;
         }
-//Delivery menucoice, standard and express
+//Delivery menu choice display
             System.out.println();
             System.out.println("Leveransmetor: ");
             System.out.println("Välj 1 för Standardleverans: 5-7 arbetsdagar, 59kr SEK");
             System.out.println("Välj 2 för Expressleverans: 1-3 arbetsdagar, 99kr SEK");
             System.out.println("Du har valt: ");
 
-        int deliveryChoice;
-        try {
+        int deliveryChoice = 0;
+        boolean validDelivery = false;
+        //Repeat until user enters valid delivery choice
+        while (!validDelivery) {
+
+        try { //Reading user inout and checking if it's within the allowed range
             deliveryChoice = scanner.nextInt();
         //Cheching for valid delivery choice
         if (deliveryChoice < 1 || deliveryChoice > 2) {
             throw new IllegalArgumentException("Ogiltligt val");
         }
+        validDelivery = true;
         //Catch for invalid input when user enters something besides a number
         } catch (InputMismatchException e) {
             System.out.println("Ogiltigt val. Vänligen ange giltligt nummer");
             scanner.nextLine();
-            break;
+
         } catch (IllegalArgumentException e) { // catch for invalid delivery choice
             System.out.println(e.getMessage());
-            break;
+        }
         }
         // info is added to send order to customer
         scanner.nextLine();
@@ -200,7 +213,7 @@ public class Main {
                     }
                 break;
 
-            case 3: //menuchoice to chage delivery adress, must have orderId to proceed
+            case 3: //menu choice to change delivery adress, must have orderId to proceed
 
                 if (orders.isEmpty()) {
                     System.out.println("Ingen beställning hittad");
@@ -253,7 +266,7 @@ public class Main {
                         }
                     }
                     break;
-                   //menuchoice to exit
+                   //menu choice to exit
                 case 5:
                     running = false;
                     System.out.println("Tack för besöket, välkommen åter!");
