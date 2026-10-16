@@ -12,7 +12,7 @@ public class RoseBouquet extends Bouquet {
     //overrides the description in superclass
     @Override
     public  String getDescription() {
-        return "Röda rosor till flickbän, mamma, eller varför inte dig själv?";
+        return "Röda rosor till flickvän, mamma, eller varför inte dig själv?";
     }
 
 }

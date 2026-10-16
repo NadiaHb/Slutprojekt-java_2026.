@@ -108,7 +108,7 @@ public class Main {
                             System.out.println(bouquet.getDescription());
                         }
                         //Ask user to choose bouquet
-                        System.out.println("Välj bukett genom att välja val 1-2");
+                        System.out.println("Välj bukett genom att välja val 1-3");
                         try {
                             bouquetChoice = scanner.nextInt();//Check user's choise
 
@@ -216,27 +216,30 @@ public class Main {
 
                 //menu choice to display order, orderId is needed
                 case 2:
+                {
+                    System.out.println("Vänligen ange order-Id");
+                    int orderId = scanner.nextInt();
+                    scanner.nextLine();
+                    // loop through the order arraylist to find order that matches the entered orderID
+                    Order selectedOrder = null;
 
-                    if (orders.isEmpty()) { //checking if there's no order
-                        System.out.println("Ingen beställning hittad");
-                    } else {
-                        System.out.println("Ange orderId"); //user must enter orderId
-                        int orderId = scanner.nextInt();
-                        scanner.nextLine();
-                        //checking for valid orderId, finding matching order and displaying info
-                        if (orderId > 0 && orderId <= orders.size()) {
-                            Order selectedOrder = orders.get(orderId - 1);
-                            selectedOrder.displayOrder();
-
-                        } else {
-                            System.out.println("Ogiltligt orderId");
+                    for (Order order : orders) {
+                        if (order.getOrderId() == orderId) {
+                            selectedOrder = order;
+                            break;
                         }
                     }
+                    if (selectedOrder != null) { //Displau the order if found
+                        selectedOrder.displayOrder();
+                    } else { //otherwise this error message displays
+                        System.out.println("Ogiltligt order-Id");
+                    }
                     break;
+                }
 
                 case 3: //menu choice to change delivery adress, must have orderId to proceed
 
-                    if (orders.isEmpty()) {
+                    if (orders.isEmpty()) { //if there's no order
                         System.out.println("Ingen beställning hittad");
                     } else {
                         System.out.println("Ange order ID");
