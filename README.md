@@ -42,5 +42,5 @@ I used ArrayLists to store the bouquet options as well as the orders, making it 
 
 The menu is built usina a loop ans a switch so that the user can choose different actions without restarting the program. Inpus validation and exception handling are used to insure that the program does not crash when user enters invalid input.
 
-An alternative could have been to put all functionality in one large cass but using separate classes makes the program and code more organized and easier to work on if you would like to adjust or add anything.
+An alternative could have been to put all functionality in one large class but using separate classes makes the program and code more organized and easier to work on if you would like to adjust or add anything.
 
