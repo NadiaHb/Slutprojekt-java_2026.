@@ -30,17 +30,17 @@ Error handling:
 Entering letters instead of numbers
 Selecting an invalid delivery method
 Selecting an invalid bouquet
-Entering an invalid manu choice
+Entering an invalid menu choice
 Trying to show or cancel a non existing order
 
-The program is structured using object-oriented programming to mke the code easy to understant and develop.
+The program is structured using object-oriented programming to make the code easy to understand and develop.
 Bouquet, the superclass, contains common information and methods shared by the different bouquets. The three subclasses inherit from it and override methods to provide their own description and information. This method demonstrated inheritance and polymorphism.
 
 The interface DeliveryInfo is implemented by Order class and Delivery class to allow classes to display information regarding delivery.
 
 I used ArrayLists to store the bouquet options as well as the orders, making it easy to add, display or remove objects.
 
-The menu is built usina a loop ans a switch so that the user can choose different actions without restarting the program. Inpus validation and exception handling are used to insure that the program does not crash when user enters invalid input.
+The menu is built using a loop and a switch so that the user can choose different actions without restarting the program. Input validation and exception handling are used to ensure that the program does not crash when user enters invalid input.
 
 An alternative could have been to put all functionality in one large class but using separate classes makes the program and code more organized and easier to work on if you would like to adjust or add anything.
 
