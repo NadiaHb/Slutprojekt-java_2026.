@@ -1,23 +1,46 @@
-Planeringsmall — Projektskiss Fyll i denna mall innan ni börjar koda. Skissen är ett första utkast, inte ett facit — det är både normalt och förväntat att klassnamn och struktur ändras när ni väl börjar implementera. Spara den ifyllda mallen som README i er första commit, tillsammans med namn på den/de som jobbar i projektet.
-
 Nadia Hörberg
 
-Projektidé En till två meningar: vilken domän, och vad programmet ska göra. Blomsterbutik, användaren ska kunna se vilka blommor/varor det finns i lager, skapa beställning och få den hemskickad.
+Flowershop Project description: Console-based online flowershop. The user can see and order avaiable products and get it shipped for home delivery.
 
-Superklass Namn: Order
+Superclass Name: Bouquet
 
-Gemensamma fält: customerName, orderId, status, price, adress
+Common fields: name, price
 
-Gemensamma metoder: basketPrice(), displayOrder(), changeStatus()
+Common methods: 
+displayBouquet()
+getDescription()
 
-Subklasser (minst tre) Namn — vad gör den annorlunda, vilka metoder overridas? BouquetOrder, basketPrice() ovverridas. Priser beräknas utifrån kostnaden på varan/varorna i kundkorgen StandardDelivery, basketPrice(). Lägger till leveranskostnad på priset. ExpressDelivery, basketPrice(). Lägger till en extra kostnad för leveransen.
+Subclasses: 
+TulipBouquet - extends Bouquet and overrides dislayBouquet() and getDescription()
+RoseBouquet - extends Bouquet and overrides dislayBouquet() and getDescription()
+AutumnBouquet - extends Bouquet and overrides dislayBouquet() and getDescription()
 
-Interface Namn: Discount Metod(er): applyDiscount() Implementeras av (minst två subklasser): BouquetOrder, standardDelivery
+Interface name: DeliveryInfo
+-Method: showDeliveryInfo()
+-Implemented by: Delivery, Order
 
-Meny Lista minst fyra åtgärder kopplade till samlingen (t.ex. lägga till, ta bort, söka, samt en egen åtgärd som passar er domän). -Lägg till order -Ändra order -Visa orderstatus -Avbryt order
+Menu:
+1. Create order
+2. View an existing order
+3. Change delivery adress
+4. Cancel an order
+5. Exit program
 
-Felscenarion Minst två konkreta situationer i just ert program som kan gå fel och som ni behöver hantera (inte generella exempel).
+Error handling:
+Entering letters instead of numbers
+Selecting an invalid delivery method
+Selecting an invalid bouquet
+Entering an invalid manu choice
+Trying to show or cancel a non existing order
 
--Försök att spåra en beställning som inte finns, alltså utan orderId eller med ett orderId som inte finns -Försök att lägga en order utan att varor lagts till
+The program is structured using object-oriented programming to mke the code easy to understant and develop.
+Bouquet, the superclass, contains common information and methods shared by the different bouquets. The three subclasses inherit from it and override methods to provide their own description and information. This method demonstrated inheritance and polymorphism.
 
-Motivering (fylls i senare i veckan) När ni kommit igång och gjort några ändringar: skriv kort varför strukturen ser ut som den gör, och om ni övervägde ett annat sätt att lösa det på. Detta behöver inte fyllas i redan i första commiten.
+The interface DeliveryInfo is implemented by Order class and Delivery class to allow classes to display information regarding delivery.
+
+I used ArrayLists to store the bouquet options as well as the orders, making it easy to add, display or remove objects.
+
+The menu is built usina a loop ans a switch so that the user can choose different actions without restarting the program. Inpus validation and exception handling are used to insure that the program does not crash when user enters invalid input.
+
+An alternative could have been to put all functionality in one large cass but using separate classes makes the program and code more organized and easier to work on if you would like to adjust or add anything.
+
