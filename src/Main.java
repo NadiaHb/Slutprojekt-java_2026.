@@ -67,7 +67,7 @@ public class Main {
                     }
 
                     String adress = "";
-                    while (adress.isBlank()) {
+                    while (adress.isBlank()) { //Keeps asking for address until customer enters an address
                         System.out.println("Vänligen ange din leveransadress");
                         adress = scanner.nextLine();
 
@@ -77,7 +77,7 @@ public class Main {
                     }
 
                     String mail = "";
-                    while (mail.isBlank()) {
+                    while (mail.isBlank()) { //Keeps asking for mail until user enters an email address
                         System.out.println("Vänligen ange e-post för orderbekräftelse.");
                         mail = scanner.nextLine();
 
@@ -172,7 +172,7 @@ public class Main {
                     scanner.nextLine();
 
                     Delivery delivery;
-
+                    //Creates the selected type of delivery with the delivery fee
                     if (deliveryChoice == 1) {
                         delivery = new Delivery("Standardleverans", 59
                         );
@@ -238,7 +238,7 @@ public class Main {
                 }
 
                 case 3: //menu choice to change delivery adress, must have orderId to proceed
-
+                        //Finds the order by order-Id before allowing change of address
                     if (orders.isEmpty()) { //if there's no order
                         System.out.println("Ingen beställning hittad");
                     } else {
@@ -274,7 +274,7 @@ public class Main {
 
                 //menuchoice to cancel order, must have orderId to proceed
                 case 4:
-                    if (orders.isEmpty()) {
+                    if (orders.isEmpty()) { //Checks if there's any orders to cancel
                         System.out.println();
                         System.out.println("Ingen beställning hittad");
                     } else {
@@ -283,7 +283,7 @@ public class Main {
                         scanner.nextLine();
 
                         if (orderId > 0 && orderId <= orders.size()) {
-                            orders.remove(orderId - 1);
+                            orders.remove(orderId - 1); //Removes the selected order from list
                             System.out.println("Beställning avbruten");
                         } else {
                             System.out.println("Ogiltligt orderId");
